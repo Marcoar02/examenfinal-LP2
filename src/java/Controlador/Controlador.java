@@ -2,6 +2,8 @@ package Controlador;
 
 import Modelo.Area;
 import Modelo.Persona;
+import Modelo.Rol;
+import Modelo.Sugerencia;
 import modeloDAO.AreaDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -11,6 +13,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import modeloDAO.PersonaDAO;
+import modeloDAO.RolDAO;
+import modeloDAO.SugerenciaDAO;
 
 public class Controlador extends HttpServlet {
     
@@ -28,6 +32,20 @@ public class Controlador extends HttpServlet {
     String editararea = "vista/EditarArea.jsp";
     Area area = new Area();
     AreaDAO areaDAO = new AreaDAO();
+    
+    //Controlador para tabla Rol
+    String listarrol = "vista/ListarRol.jsp";
+    String agregarrol = "vista/AgregarRol.jsp";
+    String editarrol = "vista/EditarRol.jsp";
+    Rol rol = new Rol();
+    RolDAO rolDAO = new RolDAO();
+    
+    //Controlador para tabla Sugerencia
+    String listarsugerencia = "vista/ListarSugerencia.jsp";
+    String agregarsugerencia = "vista/AgregarSugerencia.jsp";
+    String editarsugerencia = "vista/EditarSugerencia.jsp";
+    Sugerencia sugerencia = new Sugerencia();
+    SugerenciaDAO sugerenciaDAO = new SugerenciaDAO();
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -140,6 +158,80 @@ public class Controlador extends HttpServlet {
             int s_idarea = Integer.valueOf(request.getParameter("f_idarea"));
             areaDAO.eliminararea(s_idarea);
             acceso = listararea;
+        }else if (s_accion.equalsIgnoreCase("listarrol")) {
+            acceso = listarrol;
+        }else if (s_accion.equalsIgnoreCase("agregarrol01")) {
+            acceso = agregarrol;
+        }else if (s_accion.equalsIgnoreCase("agregarrol02")) {
+            String s_nombre = request.getParameter("f_nombre");
+            String s_estado = request.getParameter("f_estado");
+            rol.setNombre(s_nombre);
+            rol.setEstado(s_estado);
+            rolDAO.agregarrol(rol);
+            acceso = listarrol;
+
+        }else if (s_accion.equalsIgnoreCase("editarrol01")) {
+        request.setAttribute("f_idrol", request.getParameter("f_idrol"));
+        acceso = editarrol;
+        }else if (s_accion.equalsIgnoreCase("editarrol02")) {
+            int s_idrol = Integer.valueOf(request.getParameter("f_idrol"));            
+            String s_nombre = request.getParameter("f_nombre");  
+            String s_estado = request.getParameter("f_estado");
+            rol.setIdrol(s_idrol);
+            rol.setNombre(s_nombre);
+            rol.setEstado(s_estado);            
+            rolDAO.editarrol(rol);
+            acceso = listarrol;
+        }else if (s_accion.equalsIgnoreCase("eliminarrol")) {
+            int s_idrol = Integer.valueOf(request.getParameter("f_idrol"));
+            rolDAO.eliminarrol(s_idrol);
+            acceso = listarrol;
+        }else if (s_accion.equalsIgnoreCase("listarsugerencia")) {
+            acceso = listarsugerencia;
+        }else if (s_accion.equalsIgnoreCase("agregarsugerencia01")) {
+            acceso = agregarsugerencia;
+        }else if (s_accion.equalsIgnoreCase("agregarsugerencia02")) {
+            String s_fecha = request.getParameter("f_fecha");
+            String s_descripcion = request.getParameter("f_descripcion");
+            int s_idpersona = Integer.valueOf(request.getParameter("f_idpersona"));
+            int s_idrol = Integer.valueOf(request.getParameter("f_idrol"));
+            int s_idarea = Integer.valueOf(request.getParameter("f_idarea"));
+            sugerencia.setFecha(s_fecha);
+            sugerencia.setDescripcion(s_descripcion);
+            persona.setIdpersona(s_idpersona);
+            sugerencia.setPersona(persona);
+            rol.setIdrol(s_idrol);
+            sugerencia.setRol(rol);
+            area.setIdarea(s_idarea);
+            sugerencia.setArea(area);
+            sugerenciaDAO.agregarsugerencia(sugerencia);
+            acceso = listarsugerencia;
+
+        }else if (s_accion.equalsIgnoreCase("editarsugerencia01")) {
+        request.setAttribute("f_idsugerencia", request.getParameter("f_idsugerencia"));
+        acceso = editarsugerencia;
+        }else if (s_accion.equalsIgnoreCase("editarsugerencia02")) {
+            int s_idsugerencia = Integer.valueOf(request.getParameter("f_idsugerencia"));            
+            String s_fecha = request.getParameter("f_fecha");  
+            String s_descripcion = request.getParameter("f_descripcion");
+            int s_idpersona = Integer.valueOf(request.getParameter("f_idpersona"));
+            int s_idrol = Integer.valueOf(request.getParameter("f_idrol"));
+            int s_idarea = Integer.valueOf(request.getParameter("f_idarea"));
+            sugerencia.setIdsugerencia(s_idsugerencia);
+            sugerencia.setFecha(s_fecha);
+            sugerencia.setDescripcion(s_descripcion);
+            persona.setIdpersona(s_idpersona);
+            sugerencia.setPersona(persona);
+            rol.setIdrol(s_idrol);
+            sugerencia.setRol(rol);
+            area.setIdarea(s_idarea);
+            sugerencia.setArea(area);
+            sugerenciaDAO.editarsugerencia(sugerencia);
+            acceso = listarsugerencia;
+        }else if (s_accion.equalsIgnoreCase("eliminarsugerencia")) {
+            int s_idsugerencia = Integer.valueOf(request.getParameter("f_idsugerencia"));
+            sugerenciaDAO.eliminarsugerencia(s_idsugerencia);
+            acceso = listarsugerencia;
         }
         
         RequestDispatcher vista = request.getRequestDispatcher(acceso);

@@ -3,7 +3,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Agregar Area</title>
+        <title>Agregar Rol</title>
         <link href="CSS/bootstrap.css" rel="stylesheet" type="text/css"/>
     </head>
     <body>
@@ -20,12 +20,12 @@
                     <tbody>
                         <tr>
                             <td class="text-right">Nombre: </td>
-                            <td><input class="form-control" type="text" name="f_nombre" value="" maxlength="30" size="20" /></td>
+                            <td><input class="form-control" type="text" name="f_nombre" value="" maxlength="30" /></td>
                         </tr>
                                                 <tr>
                             <td class="text-right">Estado</td>
                             <td>
-                                <select name="f_estado" value="" >
+                                <select class="form-control" name="f_estado" value="" >
                                     <option value ="A">A</option>
                                     <option value ="B">B</option>
                                 </select>
@@ -34,7 +34,7 @@
                         </tr>
                         <tr>
                             <td class="text-center" colspan="2">
-                                <input class="btn-primary" type="submit" name="agregar" value="Agregar Rol" />
+                                <input class="btn btn-primary" type="submit" name="agregar" value="Agregar Rol" />
                                 <input type="hidden" name="f_accion" value="agregarrol02" />
                                 <a class="btn btn-success" href="Controlador?f_accion=listarrol"><FONT COLOR="white">Regresar</a>
                             </td>

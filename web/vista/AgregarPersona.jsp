@@ -20,24 +20,24 @@
                     <tbody>
                         <tr>
                             <td class="text-right">Nombre: </td>
-                            <td><input class="form-control" type="text" name="f_nombre" value="" maxlength="30" size="20" /></td>
+                            <td><input class="form-control" type="text" name="f_nombre" value="" maxlength="30" /></td>
                         </tr>
                         <tr>
                             <td class="text-right">Apellidos: </td>
-                            <td><input class="form-control" type="text" name="f_apellidos" value="" maxlength="40" size="20" /></td>
+                            <td><input class="form-control" type="text" name="f_apellidos" value="" maxlength="40"  /></td>
                         </tr>
                         <tr>
                             <td class="text-right">DNI: </td>
-                            <td><input class="form-control" type="text" name="f_dni" value="" maxlength="8" size="8" /></td>
+                            <td><input class="form-control" type="text" name="f_dni" value="" maxlength="8" /></td>
                         </tr>
                         <tr>
                             <td class="text-right">Direccion</td>
-                            <td><input class="form-control" type="text" name="f_direccion" value="" maxlength="50" size="12" /></td>
+                            <td><input class="form-control" type="text" name="f_direccion" value="" maxlength="50"  /></td>
                         </tr>
                         <tr>
                             <td class="text-right">Estado</td>
                             <td>
-                                <select name="f_estado" value="" >
+                                <select class="form-control" name="f_estado" value="" >
                                     <option value ="A">A</option>
                                     <option value ="B">B</option>
                                 </select>
@@ -46,7 +46,7 @@
                         </tr>
                         <tr>
                             <td class="text-center" colspan="2">
-                                <input class="btn-primary" type="submit" name="agregar" value="Agregar Persona" />
+                                <input class="btn btn-primary" type="submit" name="agregar" value="Agregar Persona" />
                                 <input type="hidden" name="f_accion" value="agregarpersona02" />
                                 <a class="btn btn-success" href="Controlador?f_accion=listarpersona"><FONT COLOR="white">Regresar</a>
                             </td>

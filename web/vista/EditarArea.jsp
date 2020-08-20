@@ -25,12 +25,12 @@
                     <tbody>
                         <tr>
                             <td class="text-right">Nombre: </td>
-                            <td><input type="text" name="f_nombre" value="<% out.print(area.getNombre()); %>" maxlength="20" size="20" /></td>
+                            <td><input class="form-control" type="text" name="f_nombre" value="<% out.print(area.getNombre()); %>" maxlength="20" size="20" /></td>
                         </tr>
                         <tr>
                             <td class="text-right">Estado</td>
                             <td>
-                                <select name="f_estado" value="<% out.print(area.getEstado()); %>">
+                                <select class="form-control" name="f_estado" value="<% out.print(area.getEstado()); %>">
                                     <%
                                         if(area.getEstado()== "A"){%>
                                             <option value="<% out.print(area.getEstado()); %>"><% out.print(area.getEstado()); %></option>
@@ -47,7 +47,7 @@
                         </tr>
                         <tr>
                             <td class="text-center" colspan="2">
-                                <input class="btn-primary" type="submit" name="editar" value="Editar Area" />
+                                <input class="btn btn-primary" type="submit" name="editar" value="Editar Area" />
                                 <input type="hidden" name="f_accion" value="editararea02" />
                                 <input type="hidden" name="f_idarea" value="<% out.print(area.getIdarea()); %>" />
                                 <a class="btn btn-success" href="Controlador?f_accion=listararea"><FONT COLOR="white">Regresar</a>

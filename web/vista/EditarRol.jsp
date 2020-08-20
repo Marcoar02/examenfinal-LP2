@@ -25,12 +25,12 @@
                     <tbody>
                         <tr>
                             <td class="text-right">Nombre: </td>
-                            <td><input type="text" name="f_nombre" value="<% out.print(rol.getNombre()); %>" maxlength="20" size="20" /></td>
+                            <td><input class="form-control" type="text" name="f_nombre" value="<% out.print(rol.getNombre()); %>" maxlength="20" size="20" /></td>
                         </tr>
                         <tr>
                             <td class="text-right">Estado</td>
                             <td>
-                                <select name="f_estado" value="<% out.print(rol.getEstado()); %>">
+                                <select class="form-control" name="f_estado" value="<% out.print(rol.getEstado()); %>">
                                     <%
                                         if(rol.getEstado()== "A"){%>
                                             <option value="<% out.print(rol.getEstado()); %>"><% out.print(rol.getEstado()); %></option>
@@ -47,7 +47,7 @@
                         </tr>
                         <tr>
                             <td class="text-center" colspan="2">
-                                <input class="btn-primary" type="submit" name="editar" value="Editar Rol" />
+                                <input class="btn btn-primary" type="submit" name="editar" value="Editar Rol" />
                                 <input type="hidden" name="f_accion" value="editarrol02" />
                                 <input type="hidden" name="f_idrol" value="<% out.print(rol.getIdrol()); %>" />
                                 <a class="btn btn-success" href="Controlador?f_accion=listarrol"><FONT COLOR="white">Regresar</a>
